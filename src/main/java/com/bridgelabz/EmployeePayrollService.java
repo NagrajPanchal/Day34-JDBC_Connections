@@ -13,8 +13,8 @@ public class EmployeePayrollService
             Class.forName("com.mysql.cj.jdbc.Driver"); // Driver name
             Connection con = DriverManager.getConnection(url, username, password);
             System.out.println("Connection Established successfully");
-            PreparedStatement st = con.prepareStatement("update employee_salary set salary = ? where empid = ?;");
-            st.setInt(1,300000);
+            PreparedStatement st = con.prepareStatement("Select * from employee where name = ? and id = ?");
+            st.setString(1,"Nagraj");
             st.setInt(2,1);
             boolean result = st.execute();
             if (result) {
