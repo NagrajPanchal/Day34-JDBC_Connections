@@ -13,9 +13,10 @@ public class EmployeePayrollService
             Class.forName("com.mysql.cj.jdbc.Driver"); // Driver name
             Connection con = DriverManager.getConnection(url, username, password);
             System.out.println("Connection Established successfully");
-            PreparedStatement st = con.prepareStatement("Select * from employee where joining_date between ? and ?");
-            st.setString(1,"2021-08-23 00:00:00");
-            st.setString(2,"2022-04-13 00:00:00");
+            PreparedStatement st = con.prepareStatement("Select min(id),max(id),avg(id),count(id),sum(id) \n" +
+                    "from employee where gender = ?" +
+                    "group by gender;");
+            st.setString(1,"male");
             boolean result = st.execute();
             if (result) {
                 ResultSet rs = st.getResultSet();
