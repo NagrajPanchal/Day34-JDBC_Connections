@@ -9,13 +9,13 @@ public class EmployeePayrollService
         String url = "jdbc:mysql://127.0.0.1:3306/employee_payroll"; // table details
         String username = "root"; // MySQL credentials
         String password = "root";
-        String query1 = "Select * from employee;";
+        String query = "update employee_salary set salary = 28500 where empid = 1;";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); // Driver name
             Connection con = DriverManager.getConnection(url, username, password);
             System.out.println("Connection Established successfully");
             Statement st = con.createStatement();
-            boolean result = st.execute(query1);
+            boolean result = st.execute(query);
             if (result) {
                 ResultSet rs = st.getResultSet();
                 while (rs.next()) {
