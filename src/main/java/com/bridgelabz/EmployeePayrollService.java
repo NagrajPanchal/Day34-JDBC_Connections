@@ -13,9 +13,9 @@ public class EmployeePayrollService
             Class.forName("com.mysql.cj.jdbc.Driver"); // Driver name
             Connection con = DriverManager.getConnection(url, username, password);
             System.out.println("Connection Established successfully");
-            PreparedStatement st = con.prepareStatement("Select * from employee where name = ? and id = ?");
-            st.setString(1,"Nagraj");
-            st.setInt(2,1);
+            PreparedStatement st = con.prepareStatement("Select * from employee where joining_date between ? and ?");
+            st.setString(1,"2021-08-23 00:00:00");
+            st.setString(2,"2022-04-13 00:00:00");
             boolean result = st.execute();
             if (result) {
                 ResultSet rs = st.getResultSet();
